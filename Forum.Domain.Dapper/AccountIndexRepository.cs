@@ -4,25 +4,13 @@ using ECommon.Components;
 using ECommon.Dapper;
 using Forum.Domain.Accounts;
 using Forum.Infrastructure;
+using MySql.Data.MySqlClient;
 
 namespace Forum.Domain.Dapper
 {
     [Component]
     public class AccountIndexRepository : IAccountIndexRepository
     {
-        public AccountIndex FindByAccountName(string accountName)
-        {
-            using (var connection = GetConnection())
-            {
-                connection.Open();
-                var data = connection.QueryList(new { AccountName = accountName }, Constants.AccountIndexTable).SingleOrDefault();
-                if (data != null)
-                {
-                    return new AccountIndex(data.AccountId as string, accountName);
-                }
-                return null;
-            }
-        }
         public void Add(AccountIndex index)
         {
             using (var connection = GetConnection())
@@ -36,9 +24,23 @@ namespace Forum.Domain.Dapper
             }
         }
 
-        private SqlConnection GetConnection()
+        public AccountIndex FindByAccountName(string accountName)
         {
-            return new SqlConnection(ConfigSettings.ForumConnectionString);
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                var data = connection.QueryList(new { AccountName = accountName }, Constants.AccountIndexTable).SingleOrDefault();
+                if (data != null)
+                {
+                    return new AccountIndex(data.AccountId as string, accountName);
+                }
+                return null;
+            }
+        }
+
+        private MySqlConnection GetConnection()
+        {
+            return new MySqlConnection(ConfigSettings.ForumConnectionString);
         }
     }
 }

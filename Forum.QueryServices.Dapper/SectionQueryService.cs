@@ -19,13 +19,14 @@ namespace Forum.QueryServices.Dapper
                 return connection.QueryList<SectionInfo>(null, Constants.SectionTable);
             }
         }
+
         public IEnumerable<SectionAndStatistic> FindAllInculdeStatistic()
         {
             var sql = string.Format(@"select Id
             ,Name
-            ,[Description]
+            ,Description
             ,(select sum({0}.ReplyCount) from Post where {0}.SectionId={1}.Id) as ReplyCount
-            ,(select count(0) from Post where {0}.SectionId={1}.Id) as PostCount 
+            ,(select count(0) from Post where {0}.SectionId={1}.Id) as PostCount
             from {1}", Constants.PostTable, Constants.SectionTable);
 
             using (var connection = GetConnection())
@@ -33,6 +34,7 @@ namespace Forum.QueryServices.Dapper
                 return connection.Query<SectionAndStatistic>(sql);
             }
         }
+
         public dynamic FindDynamic(string id, string option)
         {
             var columns = GetColumns(option);
@@ -41,15 +43,15 @@ namespace Forum.QueryServices.Dapper
             {
                 return connection.QueryList(new { Id = id }, Constants.SectionTable, columns).SingleOrDefault();
             }
-
         }
+
         public SectionAndStatistic FindInculdeStatisticById(string id)
         {
             var sql = string.Format(@"select Id
             ,Name
-            ,[Description]
+            ,Description
             ,(select sum({0}.ReplyCount) from Post where {0}.SectionId={1}.Id) as ReplyCount
-            ,(select count(0) from Post where {0}.SectionId={1}.Id) as PostCount 
+            ,(select count(0) from Post where {0}.SectionId={1}.Id) as PostCount
             from {1} where {1}.Id=@Id", Constants.PostTable, Constants.SectionTable);
 
             using (var connection = GetConnection())
@@ -66,9 +68,11 @@ namespace Forum.QueryServices.Dapper
                 case "simple":
                     columns = "Id,Name,Description";
                     break;
+
                 case "detail":
                     columns = "Id,Name,Description,ReplyCount,PostCount";
                     break;
+
                 default: throw new Exception("Invalid find option:" + option);
             }
             return columns;

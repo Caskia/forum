@@ -4,11 +4,17 @@ using System.Data.SqlClient;
 using System.Threading.Tasks;
 using ECommon.IO;
 using Forum.Infrastructure;
+using MySql.Data.MySqlClient;
 
 namespace Forum.Denormalizers.Dapper
 {
     public abstract class AbstractDenormalizer
     {
+        protected IDbConnection GetConnection()
+        {
+            return new MySqlConnection(ConfigSettings.ForumConnectionString);
+        }
+
         protected async Task<AsyncTaskResult> TryInsertRecordAsync(Func<IDbConnection, Task<long>> action)
         {
             try
@@ -28,6 +34,7 @@ namespace Forum.Denormalizers.Dapper
                 throw new IOException("Insert record failed.", ex);
             }
         }
+
         protected async Task<AsyncTaskResult> TryUpdateRecordAsync(Func<IDbConnection, Task<int>> action)
         {
             try
@@ -42,10 +49,6 @@ namespace Forum.Denormalizers.Dapper
             {
                 throw new IOException("Update record failed.", ex);
             }
-        }
-        protected IDbConnection GetConnection()
-        {
-            return new SqlConnection(ConfigSettings.ForumConnectionString);
         }
     }
 }

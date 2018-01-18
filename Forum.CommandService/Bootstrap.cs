@@ -4,6 +4,7 @@ using ECommon.Configurations;
 using ECommon.Logging;
 using ENode.Configurations;
 using ENode.Infrastructure;
+using ENode.MySQL;
 using ENode.SqlServer;
 using Forum.Domain.Accounts;
 using Forum.Infrastructure;
@@ -19,13 +20,21 @@ namespace Forum.CommandService
             InitializeENode();
             InitializeCommandService();
         }
+
         public static void Start()
         {
             _enodeConfiguration.StartEQueue();
         }
+
         public static void Stop()
         {
             _enodeConfiguration.ShutdownEQueue();
+        }
+
+        private static void InitializeCommandService()
+        {
+            ObjectContainer.Resolve<ILockService>().AddLockKey(typeof(Account).Name);
+            ObjectContainer.Resolve<ILoggerFactory>().Create(typeof(Program)).Info("Command service initialized.");
         }
 
         private static void InitializeENode()
@@ -41,7 +50,7 @@ namespace Forum.CommandService
                 Assembly.Load("Forum.CommandHandlers"),
                 Assembly.Load("Forum.CommandService")
             };
-            var setting = new ConfigurationSetting(ConfigSettings.ENodeConnectionString);
+            var setting = new ConfigurationSetting();
 
             _enodeConfiguration = Configuration
                 .Create()
@@ -53,18 +62,13 @@ namespace Forum.CommandService
                 .CreateENode(setting)
                 .RegisterENodeComponents()
                 .RegisterBusinessComponents(assemblies)
-                .UseSqlServerEventStore()
-                .UseSqlServerLockService()
+                .UseMySqlLockService()
+                .UseMySqlEventStore()
                 .UseEQueue()
                 .BuildContainer()
-                .InitializeSqlServerEventStore()
-                .InitializeSqlServerLockService()
+                .InitializeMySqlEventStore(ConfigSettings.ENodeConnectionString)
+                .InitializeMySqlLockService(ConfigSettings.ENodeConnectionString)
                 .InitializeBusinessAssemblies(assemblies);
-        }
-        private static void InitializeCommandService()
-        {
-            ObjectContainer.Resolve<ILockService>().AddLockKey(typeof(Account).Name);
-            ObjectContainer.Resolve<ILoggerFactory>().Create(typeof(Program)).Info("Command service initialized.");
         }
     }
 }

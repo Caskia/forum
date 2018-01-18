@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using Forum.Infrastructure;
+using MySql.Data.MySqlClient;
 
 namespace Forum.QueryServices.Dapper
 {
@@ -8,7 +9,7 @@ namespace Forum.QueryServices.Dapper
     {
         protected IDbConnection GetConnection()
         {
-            return new SqlConnection(ConfigSettings.ForumConnectionString);
+            return new MySqlConnection(ConfigSettings.ForumConnectionString);
         }
     }
 }

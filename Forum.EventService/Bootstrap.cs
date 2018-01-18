@@ -1,10 +1,10 @@
-﻿using System.Reflection;
-using ECommon.Components;
+﻿using ECommon.Components;
 using ECommon.Configurations;
 using ECommon.Logging;
 using ENode.Configurations;
-using ENode.SqlServer;
+using ENode.MySQL;
 using Forum.Infrastructure;
+using System.Reflection;
 
 namespace Forum.EventService
 {
@@ -16,10 +16,12 @@ namespace Forum.EventService
         {
             InitializeENode();
         }
+
         public static void Start()
         {
             _enodeConfiguration.StartEQueue();
         }
+
         public static void Stop()
         {
             _enodeConfiguration.ShutdownEQueue();
@@ -38,7 +40,7 @@ namespace Forum.EventService
                 Assembly.Load("Forum.ProcessManagers"),
                 Assembly.Load("Forum.EventService")
             };
-            var setting = new ConfigurationSetting(ConfigSettings.ENodeConnectionString);
+            var setting = new ConfigurationSetting();
 
             _enodeConfiguration = Configuration
                 .Create()
@@ -50,10 +52,10 @@ namespace Forum.EventService
                 .CreateENode(setting)
                 .RegisterENodeComponents()
                 .RegisterBusinessComponents(assemblies)
-                .UseSqlServerPublishedVersionStore()
+                .UseMySqlPublishedVersionStore()
                 .UseEQueue()
                 .BuildContainer()
-                .InitializeSqlServerPublishedVersionStore()
+                .InitializeMySqlPublishedVersionStore(ConfigSettings.ENodeConnectionString)
                 .InitializeBusinessAssemblies(assemblies);
 
             ObjectContainer.Resolve<ILoggerFactory>().Create(typeof(Program)).Info("Event service initialized.");

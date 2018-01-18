@@ -23,21 +23,12 @@ namespace Forum.Web
 
         public IConfiguration Configuration { get; }
 
-        public IServiceProvider ConfigureServices(IServiceCollection services)
-        {
-            ConfigSettings.Initialize();
-            ConfigSettings.ForumConnectionString = Configuration.GetConnectionString("forum");
-            ConfigSettings.ENodeConnectionString = Configuration.GetConnectionString("enode");
-            InitializeENode(services);
-            return new AutofacServiceProvider(((AutofacObjectContainer)ObjectContainer.Current).Container);
-        }
-
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
             }
             else
             {
@@ -52,6 +43,15 @@ namespace Forum.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        public IServiceProvider ConfigureServices(IServiceCollection services)
+        {
+            ConfigSettings.Initialize();
+            ConfigSettings.ForumConnectionString = Configuration.GetConnectionString("forum");
+            ConfigSettings.ENodeConnectionString = Configuration.GetConnectionString("enode");
+            InitializeENode(services);
+            return new AutofacServiceProvider(((AutofacObjectContainer)ObjectContainer.Current).Container);
         }
 
         private void InitializeENode(IServiceCollection services)
