@@ -1,13 +1,12 @@
-﻿using System.Reflection;
-using ECommon.Components;
+﻿using ECommon.Components;
 using ECommon.Configurations;
 using ECommon.Logging;
 using ENode.Configurations;
 using ENode.Infrastructure;
 using ENode.MySQL;
-using ENode.SqlServer;
 using Forum.Domain.Accounts;
 using Forum.Infrastructure;
+using System.Reflection;
 
 namespace Forum.CommandService
 {

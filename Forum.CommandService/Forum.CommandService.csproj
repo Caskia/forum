@@ -60,28 +60,10 @@
     <Reference Include="ECommon.Log4Net, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ECommon.Log4Net.2.5.2\lib\netstandard2.0\ECommon.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="ENode, Version=2.8.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.2.8.7\lib\netstandard2.0\ENode.dll</HintPath>
-    </Reference>
-    <Reference Include="ENode.EQueue, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.EQueue.2.0.1\lib\netstandard2.0\ENode.EQueue.dll</HintPath>
-    </Reference>
-    <Reference Include="ENode.MySQL, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.MySQL.1.0.1\lib\netstandard2.0\ENode.MySQL.dll</HintPath>
-    </Reference>
-    <Reference Include="ENode.SqlServer, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.SqlServer.1.0.1\lib\netstandard2.0\ENode.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="EQueue, Version=2.5.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EQueue.2.5.5.1\lib\netstandard2.0\EQueue.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data, Version=6.10.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.6.10.5\lib\net452\MySql.Data.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -123,6 +105,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\enode\ENode.EQueue\ENode.EQueue.csproj">
+      <Project>{7061d4dc-3e8a-4ef3-975a-0360376ad740}</Project>
+      <Name>ENode.EQueue</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\enode\ENode.MySQL\ENode.MySQL.csproj">
+      <Project>{2ad4ebde-ccbf-4c4f-b1ab-75d5e2eceb05}</Project>
+      <Name>ENode.MySQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\enode\ENode\ENode.csproj">
+      <Project>{d937158e-cb96-43a7-81ec-0ec8f3eee83e}</Project>
+      <Name>ENode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\enode\EQueue\EQueue.csproj">
+      <Project>{d62e0993-0680-46cc-af23-6c4320b6d1ed}</Project>
+      <Name>EQueue</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Forum.CommandHandlers\Forum.CommandHandlers.csproj">
       <Project>{985e2001-f607-44bf-a84b-31e9b7d89d0c}</Project>
       <Name>Forum.CommandHandlers</Name>
@@ -143,19 +141,6 @@
       <Project>{86985782-8588-48da-81ab-ffd3b855c73c}</Project>
       <Name>Forum.Infrastructure</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="docs\MySqlCommand.xml" />
-    <Content Include="docs\MySqlCommandBuilder.xml" />
-    <Content Include="docs\MySqlConnection.xml" />
-    <Content Include="docs\MySqlConnectionStringBuilder.xml" />
-    <Content Include="docs\MySqlDataAdapter.xml" />
-    <Content Include="docs\MySqlDataReader.xml" />
-    <Content Include="docs\MySqlException.xml" />
-    <Content Include="docs\MySqlHelper.xml" />
-    <Content Include="docs\MySqlParameter.xml" />
-    <Content Include="docs\MySqlParameterCollection.xml" />
-    <Content Include="docs\MySqlTransaction.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

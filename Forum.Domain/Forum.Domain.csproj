@@ -38,9 +38,6 @@
     <Reference Include="ECommon, Version=2.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ECommon.2.5.3\lib\netstandard2.0\ECommon.dll</HintPath>
     </Reference>
-    <Reference Include="ENode, Version=2.8.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.2.8.5\lib\netstandard2.0\ENode.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,6 +64,10 @@
     <Compile Include="Sections\SectionCreatedEvent.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\enode\ENode\ENode.csproj">
+      <Project>{d937158e-cb96-43a7-81ec-0ec8f3eee83e}</Project>
+      <Name>ENode</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Forum.Infrastructure\Forum.Infrastructure.csproj">
       <Project>{86985782-8588-48da-81ab-ffd3b855c73c}</Project>
       <Name>Forum.Infrastructure</Name>

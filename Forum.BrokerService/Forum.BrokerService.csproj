@@ -54,9 +54,6 @@
     <Reference Include="ECommon.Log4Net, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ECommon.Log4Net.2.5.2\lib\netstandard2.0\ECommon.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="EQueue, Version=2.5.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EQueue.2.5.5.1\lib\netstandard2.0\EQueue.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -85,6 +82,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\enode\EQueue\EQueue.csproj">
+      <Project>{d62e0993-0680-46cc-af23-6c4320b6d1ed}</Project>
+      <Name>EQueue</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Forum.Infrastructure\Forum.Infrastructure.csproj">
       <Project>{86985782-8588-48da-81ab-ffd3b855c73c}</Project>
       <Name>Forum.Infrastructure</Name>

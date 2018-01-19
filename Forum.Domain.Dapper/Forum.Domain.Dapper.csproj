@@ -44,12 +44,6 @@
     <Reference Include="ECommon.Dapper, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ECommon.Dapper.2.5.1\lib\netstandard2.0\ECommon.Dapper.dll</HintPath>
     </Reference>
-    <Reference Include="ENode, Version=2.8.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.2.8.7\lib\netstandard2.0\ENode.dll</HintPath>
-    </Reference>
-    <Reference Include="ENode.MySQL, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.MySQL.1.0.1\lib\netstandard2.0\ENode.MySQL.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=6.10.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.10.5\lib\net452\MySql.Data.dll</HintPath>
@@ -74,6 +68,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\enode\ENode.MySQL\ENode.MySQL.csproj">
+      <Project>{2ad4ebde-ccbf-4c4f-b1ab-75d5e2eceb05}</Project>
+      <Name>ENode.MySQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\enode\ENode\ENode.csproj">
+      <Project>{d937158e-cb96-43a7-81ec-0ec8f3eee83e}</Project>
+      <Name>ENode</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Forum.Domain\Forum.Domain.csproj">
       <Project>{5a4055c3-89bc-4149-8a6d-06ce985080c9}</Project>
       <Name>Forum.Domain</Name>

@@ -60,21 +60,6 @@
     <Reference Include="ECommon.Log4Net, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ECommon.Log4Net.2.5.2\lib\netstandard2.0\ECommon.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="ENode, Version=2.8.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.2.8.7\lib\netstandard2.0\ENode.dll</HintPath>
-    </Reference>
-    <Reference Include="ENode.EQueue, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.EQueue.2.0.1\lib\netstandard2.0\ENode.EQueue.dll</HintPath>
-    </Reference>
-    <Reference Include="ENode.MySQL, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.MySQL.1.0.1\lib\netstandard2.0\ENode.MySQL.dll</HintPath>
-    </Reference>
-    <Reference Include="ENode.SqlServer, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ENode.SqlServer.1.0.1\lib\netstandard2.0\ENode.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="EQueue, Version=2.5.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EQueue.2.5.5.1\lib\netstandard2.0\EQueue.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -123,6 +108,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\enode\ENode.EQueue\ENode.EQueue.csproj">
+      <Project>{7061d4dc-3e8a-4ef3-975a-0360376ad740}</Project>
+      <Name>ENode.EQueue</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\enode\ENode.MySQL\ENode.MySQL.csproj">
+      <Project>{2ad4ebde-ccbf-4c4f-b1ab-75d5e2eceb05}</Project>
+      <Name>ENode.MySQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\enode\ENode\ENode.csproj">
+      <Project>{d937158e-cb96-43a7-81ec-0ec8f3eee83e}</Project>
+      <Name>ENode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\enode\EQueue\EQueue.csproj">
+      <Project>{d62e0993-0680-46cc-af23-6c4320b6d1ed}</Project>
+      <Name>EQueue</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Forum.Commands\Forum.Commands.csproj">
       <Project>{7787ec6c-9cf3-401c-803a-b4da2b0ca9ef}</Project>
       <Name>Forum.Commands</Name>

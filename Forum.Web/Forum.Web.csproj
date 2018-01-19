@@ -18,15 +18,11 @@
     <PackageReference Include="ECommon.Dapper" Version="2.5.1" />
     <PackageReference Include="ecommon.jsonnet" Version="2.5.0" />
     <PackageReference Include="ecommon.log4net" Version="2.5.2" />
-    <PackageReference Include="enode" Version="2.8.7" />
-    <PackageReference Include="enode.equeue" Version="2.0.1" />
-    <PackageReference Include="ENode.MySQL" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.1" />
-    <PackageReference Include="MySql.Data" Version="6.10.5" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.0" />
   </ItemGroup>
 
@@ -39,6 +35,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\enode\ENode.EQueue\ENode.EQueue.csproj" />
+    <ProjectReference Include="..\enode\ENode.MySQL\ENode.MySQL.csproj" />
+    <ProjectReference Include="..\enode\ENode\ENode.csproj" />
+    <ProjectReference Include="..\enode\EQueue\EQueue.csproj" />
     <ProjectReference Include="..\Forum.Commands\Forum.Commands.csproj" />
     <ProjectReference Include="..\Forum.Infrastructure\Forum.Infrastructure.csproj" />
     <ProjectReference Include="..\Forum.QueryServices.Dapper\Forum.QueryServices.Dapper.csproj" />
