@@ -11,6 +11,7 @@ namespace Forum.Denormalizers.Dapper
     {
         public Task<AsyncTaskResult> HandleAsync(NewAccountRegisteredEvent evnt)
         {
+            //throw new System.Exception("asds");
             return TryInsertRecordAsync(connection =>
             {
                 return connection.InsertAsync(new
@@ -20,6 +21,7 @@ namespace Forum.Denormalizers.Dapper
                     Password = evnt.Password,
                     CreatedOn = evnt.Timestamp,
                     UpdatedOn = evnt.Timestamp,
+                    Sequence = evnt.Sequence,
                     Version = evnt.Version
                 }, Constants.AccountTable);
             });

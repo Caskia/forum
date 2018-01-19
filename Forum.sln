@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.CommandHandlers", "Forum.CommandHandlers\Forum.CommandHandlers.csproj", "{985E2001-F607-44BF-A84B-31E9B7D89D0C}"
 EndProject
@@ -27,7 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Domain.Dapper", "Foru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{F81032E5-B6FE-4697-93C4-53F5A54E8C82}"
 	ProjectSection(SolutionItems) = preProject
-		Scripts\InstallDB.sql = Scripts\InstallDB.sql
+		C:\Users\Caskia\Documents\enode.sql = C:\Users\Caskia\Documents\enode.sql
+		C:\Users\Caskia\Documents\enode_forum.sql = C:\Users\Caskia\Documents\enode_forum.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Denormalizers.Dapper", "Forum.Denormalizers.Dapper\Forum.Denormalizers.Dapper.csproj", "{433DD072-0748-4440-BA1B-4A0D6E507D3B}"
